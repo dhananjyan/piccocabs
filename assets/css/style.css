@@ -57,7 +57,7 @@ p {
 }
 
 .navbar a img {
-    height: 80px;
+    height: 95px;
     width: auto;
     justify-self: start;
     margin-left: 15%;
@@ -811,6 +811,10 @@ section#counter-stats {
 
 .modal-content {
     border-radius: 2.3rem;
+}
+
+.modal-header {
+    border-bottom: none!important;
 }
 
 .modal-body {

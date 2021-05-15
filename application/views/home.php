@@ -881,7 +881,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div class="container my-4" id="contact">
 		<div class="row justify-content-center">
 			<div class="col-xs-10 col-sm-10 col-md-4 col-lg-4 p-2 m-4">
-				<img src="<?= base_url('assets/images/picco_log_new.png') ?>" class="img-fluid" alt="Piccocabs">
+				<img src="<?= base_url('assets/images/logo.png') ?>" class="img-fluid" alt="Piccocabs">
 			</div>
 		</div>
 	</div>
@@ -1016,36 +1016,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 				<div class="modal-header justify-content-center">
-					<h3 class="modal-title">Sign up</h3>
+					<img src="<?=base_url('assets/images/logo.png')?>" alt="">
 				</div>
 				<div class="modal-body">
-				<div>
-				Let's sign you in!
-Please enter your mobile number
-				</div>
-					<form class="form-signin">
-
+					<div class="text-center">
+						<div>Let's sign you in!</div>
+						<div>Please enter your mobile number</div>
+					</div>
+					<form class="form-signin mt-3">
 						<div class="form-label-group">
-							<label for="name">Name</label>
-							<input type="text" id="name" class="form-control" placeholder="Enter your name" required="" autofocus="">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">+91</span>
+								</div>
+								<input id="mobileNumber" type="text" maxlength="10" class="form-control" placeholder="Enter your mobile number" aria-label="Username" aria-describedby="basic-addon1">
+							</div>
+							<div class="d-block text-danger" id="mobileError"></div>
 						</div>
 
-						<div class="form-label-group">
-							<label for="name">Phone number</label>
-							<input type="text" pattern="/\d{10}/" id="phone" class="form-control" placeholder="Enter your name" required="" autofocus="">
-						</div>
-
-						<div class="form-label-group">
-							<label for="inputEmail">Email address</label>
-							<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-						</div>
-
-						<div class="form-label-group mt-3">
-							<label for="inputPassword">Password</label>
-							<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-						</div>
-
-						<button class="btn btn-lg btn-primary btn-block mt-5 btn-picco" type="submit">Sign up</button>
+						<button class="btn btn-lg btn-primary btn-block mt-5 btn-picco" type="submit">Sign in</button>
 					</form>
 				</div>
 			</div>
@@ -1230,7 +1219,32 @@ Please enter your mobile number
 
 		}
 		$(document).ready(function() {
-			$('#registerModal').modal('show')
+			$('#registerModal').modal('show');
+
+			$("#mobileNumber").on("blur", function() {
+				var mobNum = $(this).val();
+				var filter = /^\d{10}$/;
+
+				if (filter.test(mobNum)) {
+					if (mobNum.length == 10) {
+						changeText();
+					} else {
+						changeText("Please enter 10  digit mobile number");
+						return false;
+					}
+				} else {
+					changeText("Please enter valid number");
+					return false;
+				}
+
+			});
+
+			const changeText = text => {
+				$('#mobileError').empty();
+				$('#mobileError').append(text);
+			}
+
+
 			$('.timepicker').timepicker({
 				interval: 15,
 				scrollbar: true
