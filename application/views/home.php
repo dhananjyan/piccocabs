@@ -1019,6 +1019,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					<h3 class="modal-title">Sign up</h3>
 				</div>
 				<div class="modal-body">
+				<div>
+				Let's sign you in!
+Please enter your mobile number
+				</div>
 					<form class="form-signin">
 
 						<div class="form-label-group">
