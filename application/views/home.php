@@ -1016,7 +1016,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 				<div class="modal-header justify-content-center">
-					<img src="<?=base_url('assets/images/logo.png')?>" alt="">
+					<img class="d-block img-fluid" src="<?=base_url('assets/images/logo.png')?>" alt="">
 				</div>
 				<div class="modal-body">
 					<div class="text-center">
